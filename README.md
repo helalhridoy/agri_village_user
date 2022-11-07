@@ -1,9 +1,5 @@
 # AgriVillage_users_app
-We are team matrix Presenting 
-AgriVillage App using Flutter
-
-THis is a edit by helal
-THis is a edit by helal
+tamim mahmud hasdjgkhfkjahkj
 
 ## Getting Started
 

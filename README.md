@@ -1,7 +1,6 @@
 # AgriVillage_users_app
-this is tamim mahmud
-A new Flutter project. 
-By team Matrix
+We are team matrix Presenting 
+AgriVillage App using Flutter
 
 ## Getting Started
 

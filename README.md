@@ -1,6 +1,6 @@
 # AgriVillage_users_app
-tamim mahmud hasdjgkhfkjahkj
 
+This is a pirated project 
 ## Getting Started
 
 This project is a starting point for a Flutter application.

@@ -1,6 +1,6 @@
-# foodpanda_users_app
+# AgriVillage_users_app
 
-A new Flutter project.
+A new Flutter project. 
 tamim mahmud
 
 ## Getting Started

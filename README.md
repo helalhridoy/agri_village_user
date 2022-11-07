@@ -1,7 +1,7 @@
 # AgriVillage_users_app
 
 A new Flutter project. 
-tamim mahmud
+By team Matrix
 
 ## Getting Started
 

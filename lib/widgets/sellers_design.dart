@@ -28,14 +28,14 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
-          height: 280,
+          height: 265,
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
               Divider(
                 height: 4,
                 thickness: 3,
-                color: Colors.grey[300],
+                color: Colors.green[300],
               ),
               Image.network(
                   widget.model!.sellerAvatarUrl!,

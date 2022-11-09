@@ -55,7 +55,7 @@ class _SearchScreenState extends State<SearchScreen>
             initSearchingRestaurant(textEntered);
           },
           decoration: InputDecoration(
-            hintText: "Search Restaurant here...",
+            hintText: "Search Farms here...",
             hintStyle: const TextStyle(color: Colors.white54),
             border: InputBorder.none,
             suffixIcon: IconButton(

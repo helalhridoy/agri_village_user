@@ -24,7 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
 {
   final items = [
-    "slider/0.jpg",
     "slider/1.jpg",
     "slider/2.jpg",
     "slider/3.jpg",
@@ -34,24 +33,10 @@ class _HomeScreenState extends State<HomeScreen>
     "slider/7.jpg",
     "slider/8.jpg",
     "slider/9.jpg",
-    "slider/10.jpg",
     "slider/11.jpg",
     "slider/12.jpg",
     "slider/13.jpg",
-    "slider/14.jpg",
-    "slider/15.jpg",
-    "slider/16.jpg",
-    "slider/17.jpg",
-    "slider/18.jpg",
-    "slider/19.jpg",
-    "slider/20.jpg",
-    "slider/21.jpg",
-    "slider/22.jpg",
-    "slider/23.jpg",
-    "slider/24.jpg",
-    "slider/25.jpg",
-    "slider/26.jpg",
-    "slider/27.jpg",
+
   ];
 
   @override
@@ -84,11 +69,11 @@ class _HomeScreenState extends State<HomeScreen>
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
-                height: MediaQuery.of(context).size.height * .3,
-                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .2,
+                width: MediaQuery.of(context).size.width*.1,
                 child: CarouselSlider(
                   options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height * .3,
+                    height: MediaQuery.of(context).size.height * .2,
                     aspectRatio: 16/9,
                     viewportFraction: 0.8,
                     initialPage: 0,
@@ -110,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen>
                           //color: Colors.green,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.all(2.0),
                           child: Image.asset(
                               index,
                             fit: BoxFit.fill,

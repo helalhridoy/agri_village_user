@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/models/sellers.dart';
-import 'package:foodpanda_users_app/widgets/sellers_design.dart';
+import 'package:agrivillage_users_app/models/sellers.dart';
+import 'package:agrivillage_users_app/widgets/sellers_design.dart';
 
 
 class SearchScreen extends StatefulWidget

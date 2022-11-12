@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/authentication/auth_screen.dart';
-import 'package:foodpanda_users_app/global/global.dart';
-import 'package:foodpanda_users_app/mainScreens/home_screen.dart';
+import 'package:agrivillage_users_app/authentication/auth_screen.dart';
+import 'package:agrivillage_users_app/global/global.dart';
+import 'package:agrivillage_users_app/mainScreens/home_screen.dart';
 
 
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:foodpanda_users_app/assistantMethods/assistant_methods.dart';
-import 'package:foodpanda_users_app/models/items.dart';
-import 'package:foodpanda_users_app/widgets/app_bar.dart';
+import 'package:agrivillage_users_app/assistantMethods/assistant_methods.dart';
+import 'package:agrivillage_users_app/models/items.dart';
+import 'package:agrivillage_users_app/widgets/app_bar.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
 
 

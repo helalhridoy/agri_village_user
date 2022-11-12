@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/mainScreens/home_screen.dart';
-import 'package:foodpanda_users_app/models/address.dart';
-import 'package:foodpanda_users_app/splashScreen/splash_screen.dart';
+import 'package:agrivillage_users_app/mainScreens/home_screen.dart';
+import 'package:agrivillage_users_app/models/address.dart';
+import 'package:agrivillage_users_app/splashScreen/splash_screen.dart';
 
 class ShipmentAddressDesign extends StatelessWidget
 {

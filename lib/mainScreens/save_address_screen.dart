@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:foodpanda_users_app/global/global.dart';
-import 'package:foodpanda_users_app/models/address.dart';
-import 'package:foodpanda_users_app/widgets/simple_app_bar.dart';
-import 'package:foodpanda_users_app/widgets/text_field.dart';
+import 'package:agrivillage_users_app/global/global.dart';
+import 'package:agrivillage_users_app/models/address.dart';
+import 'package:agrivillage_users_app/widgets/simple_app_bar.dart';
+import 'package:agrivillage_users_app/widgets/text_field.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 

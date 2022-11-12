@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/assistantMethods/address_changer.dart';
-import 'package:foodpanda_users_app/assistantMethods/cart_Item_counter.dart';
-import 'package:foodpanda_users_app/assistantMethods/total_amount.dart';
+import 'package:agrivillage_users_app/assistantMethods/address_changer.dart';
+import 'package:agrivillage_users_app/assistantMethods/cart_Item_counter.dart';
+import 'package:agrivillage_users_app/assistantMethods/total_amount.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'global/global.dart';

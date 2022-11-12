@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/mainScreens/order_details_screen.dart';
-import 'package:foodpanda_users_app/models/items.dart';
+import 'package:agrivillage_users_app/mainScreens/order_details_screen.dart';
+import 'package:agrivillage_users_app/models/items.dart';
 
 
 class OrderCard extends StatelessWidget

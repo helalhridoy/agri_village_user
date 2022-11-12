@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/assistantMethods/cart_Item_counter.dart';
-import 'package:foodpanda_users_app/main.dart';
-import 'package:foodpanda_users_app/mainScreens/cart_screen.dart';
+import 'package:agrivillage_users_app/assistantMethods/cart_Item_counter.dart';
+import 'package:agrivillage_users_app/main.dart';
+import 'package:agrivillage_users_app/mainScreens/cart_screen.dart';
 import 'package:provider/provider.dart';
 
 

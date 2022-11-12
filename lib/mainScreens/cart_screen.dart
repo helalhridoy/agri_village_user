@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:foodpanda_users_app/assistantMethods/assistant_methods.dart';
-import 'package:foodpanda_users_app/assistantMethods/cart_Item_counter.dart';
-import 'package:foodpanda_users_app/assistantMethods/total_amount.dart';
-import 'package:foodpanda_users_app/mainScreens/address_screen.dart';
-import 'package:foodpanda_users_app/models/items.dart';
-import 'package:foodpanda_users_app/splashScreen/splash_screen.dart';
-import 'package:foodpanda_users_app/widgets/app_bar.dart';
-import 'package:foodpanda_users_app/widgets/cart_item_design.dart';
-import 'package:foodpanda_users_app/widgets/progress_bar.dart';
-import 'package:foodpanda_users_app/widgets/text_widget_header.dart';
+import 'package:agrivillage_users_app/assistantMethods/assistant_methods.dart';
+import 'package:agrivillage_users_app/assistantMethods/cart_Item_counter.dart';
+import 'package:agrivillage_users_app/assistantMethods/total_amount.dart';
+import 'package:agrivillage_users_app/mainScreens/address_screen.dart';
+import 'package:agrivillage_users_app/models/items.dart';
+import 'package:agrivillage_users_app/splashScreen/splash_screen.dart';
+import 'package:agrivillage_users_app/widgets/app_bar.dart';
+import 'package:agrivillage_users_app/widgets/cart_item_design.dart';
+import 'package:agrivillage_users_app/widgets/progress_bar.dart';
+import 'package:agrivillage_users_app/widgets/text_widget_header.dart';
 import 'package:provider/provider.dart';
 
 

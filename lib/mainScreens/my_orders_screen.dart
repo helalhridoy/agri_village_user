@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/assistantMethods/assistant_methods.dart';
-import 'package:foodpanda_users_app/global/global.dart';
-import 'package:foodpanda_users_app/widgets/order_card.dart';
-import 'package:foodpanda_users_app/widgets/progress_bar.dart';
-import 'package:foodpanda_users_app/widgets/simple_app_bar.dart';
+import 'package:agrivillage_users_app/assistantMethods/assistant_methods.dart';
+import 'package:agrivillage_users_app/global/global.dart';
+import 'package:agrivillage_users_app/widgets/order_card.dart';
+import 'package:agrivillage_users_app/widgets/progress_bar.dart';
+import 'package:agrivillage_users_app/widgets/simple_app_bar.dart';
 
 class MyOrdersScreen extends StatefulWidget
 {

@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/global/global.dart';
-import 'package:foodpanda_users_app/mainScreens/home_screen.dart';
-import 'package:foodpanda_users_app/widgets/custom_text_field.dart';
-import 'package:foodpanda_users_app/widgets/error_dialog.dart';
-import 'package:foodpanda_users_app/widgets/loading_dialog.dart';
+import 'package:agrivillage_users_app/global/global.dart';
+import 'package:agrivillage_users_app/mainScreens/home_screen.dart';
+import 'package:agrivillage_users_app/widgets/custom_text_field.dart';
+import 'package:agrivillage_users_app/widgets/error_dialog.dart';
+import 'package:agrivillage_users_app/widgets/loading_dialog.dart';
 
 import 'auth_screen.dart';
 

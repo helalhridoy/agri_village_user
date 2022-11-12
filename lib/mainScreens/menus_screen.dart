@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:foodpanda_users_app/assistantMethods/assistant_methods.dart';
-import 'package:foodpanda_users_app/global/global.dart';
-import 'package:foodpanda_users_app/models/menus.dart';
-import 'package:foodpanda_users_app/models/sellers.dart';
-import 'package:foodpanda_users_app/splashScreen/splash_screen.dart';
-import 'package:foodpanda_users_app/widgets/menus_design.dart';
-import 'package:foodpanda_users_app/widgets/sellers_design.dart';
-import 'package:foodpanda_users_app/widgets/my_drawer.dart';
-import 'package:foodpanda_users_app/widgets/progress_bar.dart';
-import 'package:foodpanda_users_app/widgets/text_widget_header.dart';
+import 'package:agrivillage_users_app/assistantMethods/assistant_methods.dart';
+import 'package:agrivillage_users_app/global/global.dart';
+import 'package:agrivillage_users_app/models/menus.dart';
+import 'package:agrivillage_users_app/models/sellers.dart';
+import 'package:agrivillage_users_app/splashScreen/splash_screen.dart';
+import 'package:agrivillage_users_app/widgets/menus_design.dart';
+import 'package:agrivillage_users_app/widgets/sellers_design.dart';
+import 'package:agrivillage_users_app/widgets/my_drawer.dart';
+import 'package:agrivillage_users_app/widgets/progress_bar.dart';
+import 'package:agrivillage_users_app/widgets/text_widget_header.dart';
 
 
 class MenusScreen extends StatefulWidget

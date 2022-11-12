@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/assistantMethods/address_changer.dart';
-import 'package:foodpanda_users_app/mainScreens/placed_order_screen.dart';
-import 'package:foodpanda_users_app/maps/maps.dart';
-import 'package:foodpanda_users_app/models/address.dart';
+import 'package:agrivillage_users_app/assistantMethods/address_changer.dart';
+import 'package:agrivillage_users_app/mainScreens/placed_order_screen.dart';
+import 'package:agrivillage_users_app/maps/maps.dart';
+import 'package:agrivillage_users_app/models/address.dart';
 import 'package:provider/provider.dart';
 
 class AddressDesign extends StatefulWidget

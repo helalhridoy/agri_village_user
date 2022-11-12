@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/models/items.dart';
+import 'package:agrivillage_users_app/models/items.dart';
 
 
 class CartItemDesign extends StatefulWidget

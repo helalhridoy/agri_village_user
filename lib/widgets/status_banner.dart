@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/mainScreens/home_screen.dart';
+import 'package:agrivillage_users_app/mainScreens/home_screen.dart';
 
 
 class StatusBanner extends StatelessWidget

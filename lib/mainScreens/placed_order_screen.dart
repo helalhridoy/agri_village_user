@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:foodpanda_users_app/assistantMethods/assistant_methods.dart';
-import 'package:foodpanda_users_app/global/global.dart';
+import 'package:agrivillage_users_app/assistantMethods/assistant_methods.dart';
+import 'package:agrivillage_users_app/global/global.dart';
 
 import 'home_screen.dart';
 

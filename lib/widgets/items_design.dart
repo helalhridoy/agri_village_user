@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/mainScreens/item_detail_screen.dart';
-import 'package:foodpanda_users_app/models/items.dart';
-import 'package:foodpanda_users_app/models/sellers.dart';
+import 'package:agrivillage_users_app/mainScreens/item_detail_screen.dart';
+import 'package:agrivillage_users_app/models/items.dart';
+import 'package:agrivillage_users_app/models/sellers.dart';
 
 
 class ItemsDesignWidget extends StatefulWidget

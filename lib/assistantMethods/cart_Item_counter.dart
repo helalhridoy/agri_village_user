@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:foodpanda_users_app/global/global.dart';
+import 'package:agrivillage_users_app/global/global.dart';
 
 class CartItemCounter extends ChangeNotifier
 {

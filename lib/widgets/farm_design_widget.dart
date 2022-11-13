@@ -1,4 +1,3 @@
-import 'package:agrivillage_users_app/mainScreens/farm_profile.dart';
 import 'package:agrivillage_users_app/models/farm.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +21,6 @@ class _farm_design_widgetState extends State<farm_design_widget> {
 
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (c) => farm_profile(model: widget.model)));
-      },
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(5.0),

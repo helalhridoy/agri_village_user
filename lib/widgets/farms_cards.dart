@@ -19,7 +19,7 @@ class _farms_cardsState extends State<farms_cards> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300,
-      width: 300,
+      width: 230,
       child: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection("sellers")
@@ -32,6 +32,7 @@ class _farms_cardsState extends State<farms_cards> {
             height: 300,
             width: 300,
             child: ListView.builder(
+              padding: EdgeInsets.zero,
               physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data?.docs.length,

@@ -30,7 +30,6 @@ class _farm_profileState extends State<farm_profile> {
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
-        actions: [],
       ),
       body: farm_design_widget(
         model: widget.model,

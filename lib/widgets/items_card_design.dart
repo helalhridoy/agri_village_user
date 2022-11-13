@@ -29,7 +29,7 @@ class _item_cards_designState extends State<item_cards_design> {
     added = false;
     isFavorite = false;
     return Padding(
-        padding: EdgeInsets.only(top: 5.0, bottom: 5.0, left: 5.0, right: 5.0),
+        padding: EdgeInsets.only(top: 5.0, bottom: 5.0, left: 0.0, right: 0.0),
         child: InkWell(
             onTap: () {
               Navigator.push(

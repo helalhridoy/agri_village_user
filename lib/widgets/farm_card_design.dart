@@ -29,7 +29,7 @@ class _farm_card_designState extends State<farm_card_design> {
         width: size * .52,
         height: 200,
         margin: EdgeInsetsDirectional.only(
-          start: 10,
+          start: 20,
         ),
         decoration: BoxDecoration(
           boxShadow: [

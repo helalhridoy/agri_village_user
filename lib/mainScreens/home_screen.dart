@@ -188,6 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (context, snapshot) {
                   return Expanded(
                     child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         itemCount: snapshot.data?.docs.length,
                         itemBuilder: (BuildContext context, int index) {

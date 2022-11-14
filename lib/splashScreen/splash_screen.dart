@@ -48,16 +48,7 @@ class _MySplashScreenState extends State<MySplashScreen>
     return Material(
       child: Container(
         decoration: const BoxDecoration(
-          gradient:  LinearGradient(
-            colors: [
-              Colors.amber,
-              Colors.cyan,
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          ),
+
         ),
         child: Center(
           child: Column(
@@ -77,7 +68,7 @@ class _MySplashScreenState extends State<MySplashScreen>
                   "Order Food Online with AgriVillage.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.green,
                     fontSize: 20,
                     fontFamily: "Train",
                     letterSpacing: 3,

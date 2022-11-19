@@ -68,11 +68,11 @@ class _item_cards_designState extends State<item_cards_design> {
                                   image: NetworkImage(imgPath),
                                   fit: BoxFit.cover)))),
                   SizedBox(height: 7.0),
-                  Text(price + " TK",
+                  Text(price,
                       style: TextStyle(
-                          color: Colors.red,
+                          color: Color(0xFFCC8053),
                           fontFamily: 'Varela',
-                          fontSize: 20.0)),
+                          fontSize: 14.0)),
                   Text(name,
                       style: TextStyle(
                           color: Color(0xFF575E67),

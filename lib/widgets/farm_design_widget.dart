@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer' as dev;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:map_launcher/map_launcher.dart' as ml;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as gl;
 import 'package:agrivillage_users_app/models/farm.dart';
@@ -18,6 +19,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+
+import '../global/global.dart';
 
 
 
@@ -51,6 +54,7 @@ class _farm_design_widgetState extends State<farm_design_widget> {
       target: gl.LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
+  String uniqueIdName = DateTime.now().millisecondsSinceEpoch.toString();
 
   @override
   final images = [];
@@ -334,6 +338,40 @@ class _farm_design_widgetState extends State<farm_design_widget> {
                               if (status == 'paymentSuccess') {
                                 if (data['transactionStatus'] == 'Completed') {
                                   Style.basicToast('Payment Success');
+
+                                  saveInfo() {
+                                    final ref = FirebaseFirestore.instance
+                                        .collection("sellers")
+                                        .doc(widget.model!.sellerUID)
+                                        .collection("firmVisit");
+
+                                    ref.doc(uniqueIdName).set({
+                                      "userName": sharedPreferences!.getString("name"),
+                                      "userEmain": sharedPreferences!.getString("email"),
+                                      "userUid": sharedPreferences!.getString("uid"),
+
+                                    }).then((value) {
+                                      final itemsRef = FirebaseFirestore.instance
+                                          .collection("sellers")
+                                          .doc(widget.model!.sellerUID)
+                                          .collection("firmVisit");
+
+                                      itemsRef.doc(uniqueIdName).set({
+                                        "userName": sharedPreferences!.getString("name"),
+                                        "userEmain": sharedPreferences!.getString("email"),
+                                        "userUid": sharedPreferences!.getString("uid"),
+                                      });
+                                    }).then((value) {
+
+
+                                      setState(() {
+                                        uniqueIdName = DateTime.now().millisecondsSinceEpoch.toString();
+
+                                      });
+                                    });
+                                  }
+
+
                                 }
                               }
 

@@ -10,6 +10,12 @@ import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'dart:convert';
+
+import 'dart:developer' as dev;
+import 'package:agrivillage_users_app/utils/style.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
@@ -27,6 +33,7 @@ class farm_design_widget extends StatefulWidget {
   State<farm_design_widget> createState() => _farm_design_widgetState();
 }
 
+enum Intent { sale, authorization }
 class _farm_design_widgetState extends State<farm_design_widget> {
 
   Completer<gl.GoogleMapController> _controller = Completer();
@@ -36,6 +43,9 @@ class _farm_design_widgetState extends State<farm_design_widget> {
     zoom: 14.4746,
   );
 
+
+
+
   static final gl.CameraPosition _kLake = gl.CameraPosition(
       bearing: 192.8334901395799,
       target: gl.LatLng(37.43296265331129, -122.08832357078792),
@@ -44,9 +54,9 @@ class _farm_design_widgetState extends State<farm_design_widget> {
 
   @override
   final images = [];
-  bool initState() {
-    super.initState();
-
+    bool initState() {
+      super.initState();
+      focusNode = FocusNode();
     gl.CameraPosition _kGooglePlex = gl.CameraPosition(
       target: gl.LatLng(widget.model!.lat!,widget.model!.lng!),
       zoom: 14.4746,
@@ -62,9 +72,11 @@ class _farm_design_widgetState extends State<farm_design_widget> {
     return true;
   }
 
+
+  Intent _intent = Intent.sale;
   FocusNode? focusNode;
 
-  @override
+
   @override
   void dispose() {
     // Clean up the focus node when the Form is disposed.
@@ -250,7 +262,7 @@ class _farm_design_widgetState extends State<farm_design_widget> {
               ),
               GFListTile(
                 titleText: "Farm Charges:",
-                subTitleText: widget.model!.farmCharges!,
+                subTitleText: widget.model!.farmCharges!.toString(),
               ),
               GFListTile(
                 titleText: "Farm Status:",
@@ -260,158 +272,107 @@ class _farm_design_widgetState extends State<farm_design_widget> {
                 width: 400,
                 height: 40,
                 alignment: Alignment.center,
-                child: ElevatedButton.icon(
-                  label: Text(
-                    "Pay amount to book: " +
-                        widget.model!.farmCharges!.toString(),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  icon: const Icon(
-                    Icons.payment_sharp,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    String amount = widget.model!.farmCharges!;
-                    String intent = widget.model!.farmName!;
-
-                    if (amount.isEmpty) {
-                      // if the amount is empty then show the snack-bar
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text(
-                              "Amount is empty. Without amount you can't pay. Try again")));
-                      return;
-                    }
-
-                    // Goto BkashPayment page & pass the params
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => BkashPayment(
-                              /// depend isSandbox (true/false)
-                              isSandbox: true,
-
-                              /// amount of your bkash payment
-                              amount: amount,
-
-                              /// intent would be (sale / authorization)
-                              intent: intent,
-                              // accessToken: '', /// if the user have own access token for verify payment
-                              currency: 'BDT',
-
-                              /// bkash url for create payment, when you implement on you project then it be change as your production create url, [when you send it on sandbox mode, send it as empty string '' or anything]
-                              createBKashUrl:
-                                  'https://merchantserver.sandbox.bka.sh/api/checkout/v1.2.0-beta/payment/create',
-
-                              /// bkash url for execute payment, , when you implement on you project then it be change as your production create url, [when you send it on sandbox mode, send it as empty string '' or anything]
-                              executeBKashUrl:
-                                  'https://merchantserver.sandbox.bka.sh/api/checkout/v1.2.0-beta/payment/execute',
-
-                              /// for script url, when you implement on production the set it live script js (https://scripts.pay.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-pay.js)
-                              scriptUrl:
-                                  'https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js',
-
-                              /// the return value from the package
-                              /// status => 'paymentSuccess', 'paymentFailed', 'paymentError', 'paymentClose'
-                              /// data => return value of response
-                              paymentStatus: (status, data) {
-                                dev.log('return status => $status');
-                                dev.log('return data => $data');
-
-                                /// when payment success
-                                if (status == 'paymentSuccess') {
-                                  if (data['transactionStatus'] ==
-                                      'Completed') {
-                                    Fluttertoast.showToast(
-                                        msg: 'Payment Success',
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  }
-                                }
-
-                                /// when payment failed
-                                else if (status == 'paymentFailed') {
-                                  if (data.isEmpty) {
-                                    Fluttertoast.showToast(
-                                        msg: 'Payment Success',
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  } else if (data[0]['errorMessage']
-                                          .toString() !=
-                                      'null') {
-                                    Fluttertoast.showToast(
-                                        msg:
-                                            "Payment Failed ${data[0]['errorMessage']}",
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  } else {
-                                    Fluttertoast.showToast(
-                                        msg: "Payment Failed",
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  }
-                                }
-
-                                // when payment on error
-                                else if (status == 'paymentError') {
-                                  Fluttertoast.showToast(
-                                      msg: jsonDecode(
-                                          data['responseText'])['error'],
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.CENTER,
-                                      timeInSecForIosWeb: 1,
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.white,
-                                      fontSize: 16.0);
-                                }
-
-                                // when payment close on demand closed the windows
-                                else if (status == 'paymentClose') {
-                                  if (data == 'closedWindow') {
-                                    Fluttertoast.showToast(
-                                        msg: 'Failed to payment, closed screen',
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  } else if (data == 'scriptLoadedFailed') {
-                                    Fluttertoast.showToast(
-                                        msg: 'Payment screen loading failed',
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  }
-                                }
-                                // back to screen to pop()
-                                Navigator.of(context).pop();
-                              },
-                            )));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                child: Center(
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
+                        backgroundColor: Colors.green),
+                    child: Text(
+                      "Pay "+widget.model!.farmCharges!.toString()+" Taka with Bkash",
+                      style: TextStyle(color: Colors.white),
                     ),
+                    onPressed: () {
+                      String amount = widget.model!.farmCharges!;
+                      String intent ="sale";
+                      // String intent =
+                      // //_intent == Intent.sale ? "sale" : "authorization";
+
+                      if (amount.isEmpty) {
+                        // if the amount is empty then show the snack-bar
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text(
+                                "Amount is empty. Without amount you can't pay. Try again")));
+                        return;
+                      }
+                      // remove focus from TextField to hide keyboard
+                      focusNode!.unfocus();
+                      // Goto BkashPayment page & pass the params
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => BkashPayment(
+                            /// depend isSandbox (true/false)
+                            isSandbox: true,
+
+                            /// amount of your bkash payment
+                            amount: amount,
+
+                            /// intent would be (sale / authorization)
+                            intent: intent,
+                            // accessToken: '', /// if the user have own access token for verify payment
+                            // currency: 'BDT',
+                            /// bkash url for create payment, when you implement on you project then it be change as your production create url, [when you send it on sandbox mode, send it as empty string '' or anything]
+                            createBKashUrl:
+                            'https://merchantserver.sandbox.bka.sh/api/checkout/v1.2.0-beta/payment/create',
+
+                            /// bkash url for execute payment, , when you implement on you project then it be change as your production create url, [when you send it on sandbox mode, send it as empty string '' or anything]
+                            executeBKashUrl:
+                            'https://merchantserver.sandbox.bka.sh/api/checkout/v1.2.0-beta/payment/execute',
+
+                            /// for script url, when you implement on production the set it live script js (https://scripts.pay.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-pay.js)
+                            scriptUrl:
+                            'https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js',
+
+                            /// the return value from the package
+                            /// status => 'paymentSuccess', 'paymentFailed', 'paymentError', 'paymentClose'
+                            /// data => return value of response
+                            paymentStatus: (status, data) {
+                              dev.log('return status => $status');
+                              dev.log('return data => $data');
+
+                              /// when payment success
+                              if (status == 'paymentSuccess') {
+                                if (data['transactionStatus'] == 'Completed') {
+                                  Style.basicToast('Payment Success');
+                                }
+                              }
+
+                              /// when payment failed
+                              else if (status == 'paymentFailed') {
+                                if (data.isEmpty) {
+                                  Style.errorToast('Payment Failed');
+                                } else if (data[0]['errorMessage'].toString() !=
+                                    'null') {
+                                  Style.errorToast(
+                                      "Payment Failed ${data[0]['errorMessage']}");
+                                } else {
+                                  Style.errorToast("Payment Failed");
+                                }
+                              }
+
+                              // when payment on error
+                              else if (status == 'paymentError') {
+                                Style.errorToast(
+                                    jsonDecode(data['responseText'])['error']);
+                              }
+
+                              // when payment close on demand closed the windows
+                              else if (status == 'paymentClose') {
+                                if (data == 'closedWindow') {
+                                  Style.errorToast(
+                                      'Failed to payment, closed screen');
+                                } else if (data == 'scriptLoadedFailed') {
+                                  Style.errorToast(
+                                      'Payment screen loading failed');
+                                }
+                              }
+                              // back to screen to pop()
+                              Navigator.of(context).pop();
+                            },
+                          )));
+                    },
                   ),
-                ),
+                )
               ),
             ],
           ),

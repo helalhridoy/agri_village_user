@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer' as dev;
-
+import 'package:map_launcher/map_launcher.dart' as ml;
+import 'package:google_maps_flutter/google_maps_flutter.dart' as gl;
 import 'package:agrivillage_users_app/models/farm.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,10 @@ import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+
+
 
 class farm_design_widget extends StatefulWidget {
   //const farm_design_widget({Key? key}) : super(key: key);
@@ -22,10 +28,30 @@ class farm_design_widget extends StatefulWidget {
 }
 
 class _farm_design_widgetState extends State<farm_design_widget> {
+
+  Completer<gl.GoogleMapController> _controller = Completer();
+
+  static final gl.CameraPosition _kGooglePlex = gl.CameraPosition(
+    target: gl.LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final gl.CameraPosition _kLake = gl.CameraPosition(
+      bearing: 192.8334901395799,
+      target: gl.LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
   @override
   final images = [];
   bool initState() {
     super.initState();
+
+    gl.CameraPosition _kGooglePlex = gl.CameraPosition(
+      target: gl.LatLng(widget.model!.lat!,widget.model!.lng!),
+      zoom: 14.4746,
+    );
+
 
     focusNode = FocusNode();
     String intent = widget.model!.farmName!;
@@ -187,10 +213,10 @@ class _farm_design_widgetState extends State<farm_design_widget> {
                     color: Colors.white,
                   ),
                   onPressed: () async {
-                    if (await MapLauncher.isMapAvailable(MapType.google) ??
+                    if (await MapLauncher.isMapAvailable(ml.MapType.google) ??
                         false) {
                       await MapLauncher.showMarker(
-                        mapType: MapType.google,
+                        mapType: ml.MapType.google,
                         coords: Coords(widget.model!.lat!, widget.model!.lng!),
                         title: widget.model!.farmName.toString(),
                         description: widget.model!.farmDetails,
@@ -204,6 +230,19 @@ class _farm_design_widgetState extends State<farm_design_widget> {
                     ),
                   ),
                 ),
+              ),
+              Container(
+                width: 400,
+                height: 400,
+                alignment: Alignment.center,
+                child:gl.GoogleMap(
+                  mapType:  gl.MapType.hybrid,
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (gl.GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                ),
+
               ),
               GFListTile(
                 titleText: "Visiting Hour:",
